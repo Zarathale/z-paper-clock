@@ -3,6 +3,9 @@
     "folds": {},
     "captured": "2026-08-23T21:14:07.000Z",
     "note": "Anchor-arm face placed at the front of the 066 bearing box. +Z is toward the viewer; depth assignment confirmed by Alan on 2026-08-23.",
+    "provenance": {
+      "transform": "User decision in the 2026-08-23 anchor-cluster review; recorded in sessions/2026-08-23-1414_code_anchor-cluster-depth.md."
+    },
     "transform": {
       "translation": [
         0,
