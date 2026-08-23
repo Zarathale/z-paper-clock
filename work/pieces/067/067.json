@@ -1,13 +1,13 @@
 {
   "assembled": {
     "folds": {},
-    "captured": "2026-05-10T22:54:52.120Z",
-    "note": "",
+    "captured": "2026-08-23T21:14:07.000Z",
+    "note": "Rear plate placed at the back of the 066 bearing box. -Z is away from the viewer; depth assignment confirmed by Alan on 2026-08-23.",
     "transform": {
       "translation": [
         0,
         0,
-        0
+        -10
       ],
       "rotation_deg": [
         0,
@@ -19,5 +19,5 @@
       "origin": "pivot-anchor"
     }
   },
-  "_savedAt": "2026-05-10T15:54:52.127069"
+  "_savedAt": "2026-08-23T14:14:07.000000"
 }
