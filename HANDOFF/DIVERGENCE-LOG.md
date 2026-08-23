@@ -42,15 +42,23 @@ Keep it cheap. A few lines per entry. If writing an entry feels like a chore, th
 
 ## Line identity
 
-> **Fill this in on your first session.**
->
-> - **Branch:**
-> - **Driver:**
-> - **Started:**
-> - **Opening stance:** *(one paragraph — what you intend to do differently, if anything, and why. Write this before you have done any work. It is the most interesting entry in the file and it can only be written once.)*
+> - **Branch:** `main-gpt`
+> - **Driver:** Codex, GPT line
+> - **Started:** 2026-08-23
+> - **Opening stance:** Preserve the artifact-first data model and the useful parts of the inherited operating discipline, but require deterministic geometry or a human observation before promoting an assembly pose from provisional to verified. Prefer closing small physical ambiguities in sidecars over adding viewer machinery.
 
 ---
 
 ## Entries
 
-*(none yet)*
+### 2026-08-23 — Physical depth is assembly state
+**Kind:** decision  
+**What:** Place 065 at Z=+10 mm and 067 at Z=-10 mm around 066's Z=0 mid-plane. Keep the existing derived-pivot convention: pivot markers seed the cluster; connected members inherit membership.  
+**Why:** The bearing box is about 20.3 mm deep, and Alan confirmed the anchor-arm face/front versus rear-plate ordering. Leaving both plates at Z=0 erased a real physical relationship.  
+**Reversible?** yes
+
+### 2026-08-23 — 066 XY pose downgraded
+**Kind:** correction  
+**What:** Keep the inherited 066 transform numerically unchanged for now, but mark its XY placement provisional.  
+**Why:** Its 2026-05-10 derivation held `pane1` fixed, while the actual `preview.html` hinge-tree rule selects `pane2` (highest degree, alphabetical tie-break). A root-aware re-derivation is required before the pose can be called verified.  
+**Reversible?** yes
