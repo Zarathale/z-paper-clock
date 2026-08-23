@@ -1,13 +1,13 @@
 {
   "assembled": {
     "folds": {},
-    "captured": "2026-05-10T23:45:02.725Z",
-    "note": "",
+    "captured": "2026-08-23T21:14:07.000Z",
+    "note": "Anchor-arm face placed at the front of the 066 bearing box. +Z is toward the viewer; depth assignment confirmed by Alan on 2026-08-23.",
     "transform": {
       "translation": [
         0,
         0,
-        0
+        10
       ],
       "rotation_deg": [
         0,
@@ -19,5 +19,5 @@
       "origin": "axles[0]"
     }
   },
-  "_savedAt": "2026-05-10T16:45:02.729435"
+  "_savedAt": "2026-08-23T14:14:07.000000"
 }
