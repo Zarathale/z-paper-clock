@@ -24,7 +24,11 @@
       "fold-b65-pane1": 0
     },
     "captured": "2026-05-11T04:33:58.805Z",
-    "note": "",
+    "note": "Depth stack verified 2026-08-23: 066 remains on Z=0 between 065 (+10 mm) and 067 (-10 mm). The inherited XY placement remains provisional pending a root-aware re-derivation.",
+    "provenance": {
+      "folds": "Captured in the preview authoring tool on 2026-05-10.",
+      "transform": "Computed in sessions/2026-05-10-2206_cowork_066-assembly-pivot-box.md; reclassified as provisional by deterministic source-geometry review on 2026-08-23."
+    },
     "transform": {
       "translation": [
         -23.9,
@@ -39,8 +43,8 @@
       "rotation_order": "XYZ",
       "frame": "world",
       "origin": "centroid",
-      "note": "translation computed to center heptagonal tube on anchor-pivot (world origin). Y offset arises because tube center != strip centroid after folding. Z=0 correct; faces (065/067) sit at Z~±10mm but both saved at Z=0 — acceptable for visualization."
+      "note": "PROVISIONAL: the 2026-05-10 centering derivation held pane1 fixed, while preview.html's highest-degree/alphabetical hinge-tree rule selects pane2 for this SVG. Do not treat XY as verified. Z=0 is retained as the bearing-box mid-plane."
     }
   },
-  "_savedAt": "2026-05-10T21:33:58.808223"
+  "_savedAt": "2026-08-23T14:14:07.000000"
 }
