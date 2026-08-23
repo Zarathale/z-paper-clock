@@ -35,7 +35,11 @@ Personal project repo for a model paper-clock build, studying *Make Your Own Wor
 
 The study side is complete: full transcriptions of all prose and embedded-label content, plus the gen-1 cleaned scan archive (now retired to `source/_archive/`). Source-side capture closed 2026-05-05 at 123/123 per-piece PNGs in `source/pieces/`.
 
-The build side is mid-flight on **panels-first SVG authoring** in Affinity Designer + a single-file `preview.html` viewer at repo root that loads any piece by id and renders folds + cuts + axles + assembled-pose. 17 pieces are panels-first authored across the anchor / pendulum / bob clusters; the connection graph (`claude-work/state/connection-graph.{md,json}`) resolves cross-piece edges. M0.6 (preview tool) is the active milestone; M3+ (production viewer) is downstream pending the architecture decision (DECISIONS #4 in `claude-work/DECISIONS.md`). For the live per-track stance, see `claude-work/STATUS.md`.
+The build side stopped mid-flight on 2026-05-10 and the repository was frozen on 2026-08-22. **32 SVGs are authored across 41 piece folders**, panels-first, in Affinity Designer; four carry JSON sidecars. A single-file `preview.html` at repo root loads any piece by id and folds it in three.js — Bench mode for a single piece, Cluster mode for a subassembly with snap-to-connection-point, and a guided assembly stepper driven by an annotated 68-step instruction sequence. The connection graph (`claude-work/state/connection-graph.{md,json}`) carries 51 declared cross-piece edges across 28 pieces, 30 of them resolving.
+
+The production viewer does not exist and was deliberately deferred: `DECISIONS.md` #4 (closed 2026-05-07) keeps `preview.html` as the permanent authoring tool and builds a fresh TypeScript viewer at `claude-work/viewer/` only when M3 is imminent.
+
+**Start at `HANDOFF/README.md`.** The project has forked into two independent lines — `main-claude` and `main-gpt` — and `main` is frozen.
 
 ## A note on scope
 

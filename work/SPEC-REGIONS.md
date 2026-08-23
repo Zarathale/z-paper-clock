@@ -1,6 +1,13 @@
 # Regions and Face Graph — Design Spec
 
-**Status:** draft
+> **⏹ FROZEN 2026-08-22 — legacy decision record.**
+> This document's load-bearing premise — *"Regions are **not authored** — they are derived at load time from the layered SVG"* — was **reversed on 2026-05-05** by `DECISIONS.md` #6. Panels-first authoring makes the author name every panel as a closed polygon and every fold declare its two panels; the derivation step this spec describes no longer runs for any piece authored after that date.
+>
+> It is preserved because it is an honest record of how far cut-line-first got and where its ceiling was: the algorithm shipped in `preview.html` v1b (2026-05-03), was revised by DECISIONS #5's cut-trim, and still left 13 orphan regions on piece 066. It survives in the code only as the legacy parser for pre-pivot pieces (001, 002, 058, 113–116).
+>
+> Also stale: the TypeScript interfaces (no TypeScript exists anywhere in this project), the Shapely reference (not in the venv), the root-marker convention (superseded by derived pivots, DECISIONS #7.19), the pendulum-arm piece id left "to be confirmed" (it is 070, with 071 and 072), and the pointer to `WORKPLAN.md` (frozen 2026-05-04).
+
+**Status:** frozen 2026-08-22 (was: draft)
 **Created:** 2026-05-03
 **Standalone:** yes — may eventually merge into `SPEC-3D-VIEWER.md` but starts here so it can iterate independently.
 

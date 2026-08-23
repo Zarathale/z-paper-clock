@@ -7,6 +7,15 @@
 *Purpose: permanent reference for guided-assembly design; eliminates re-reading the source
 on each relevant session. Cross-references use our 3-digit piece IDs throughout.*
 
+> **Reconciled 2026-08-22 at the project freeze.** This file was three days old when work
+> stopped and is the freshest of the design documents; corrections are inline below and
+> marked `[CORRECTED 2026-08-22]`. Two smaller issues left as-is rather than edited, because
+> they are cosmetic: the Legend omits `[CHECK]` (used three times in the body, and properly a
+> step type — `[STEP check]`) and omits the step types `fold/cut` and `wind`, both of which
+> the body uses. Coverage note: §II.C is elaborated to per-step granularity and has a
+> companion `guided_sequence_anchor.json`; §II.A, §II.B and §II.D are high-level only, and
+> framework pieces 005–022 are never treated individually.
+
 ---
 
 ## Annotation Legend
@@ -50,6 +59,11 @@ on each relevant session. Cross-references use our 3-digit piece IDs throughout.
 `[RULE]` The letter labels on the pieces themselves are the primary guide; the prose
 instructions only call out special cases. The connection graph is the digital equivalent of
 reading all the letter labels off all 123 pieces.
+
+`[CORRECTED 2026-08-22]` Aspirational as written. At the freeze the graph covers **28 of 123
+pieces** and carries **51 declared cross-piece edges, 30 of which resolve** — plus 14 untyped
+landings and zero inferred entries. It is the digital equivalent of having read the labels off
+the pieces somebody has authored, which is under a quarter of them.
 
 ---
 
@@ -340,8 +354,19 @@ primary vertical alignment control for gear mesh.
 **Pieces:**
 - Anchor: **065, 066, 067, 068, 069**
 - Pendulum: **070** (rod), **071** (square ring), **072** (blade)
-- Bob casing: **093** (×6 pieces → 3 braces), **094** (casing), **095**
+- Bob casing: **093a** + **093b** (see correction below), **094** (casing), **095**
 - Bob holder: **097, 098**
+- Also authored in this section but omitted from the original list: **096** (cardboard
+  reinforcement), **099** (bob face), **100** (bob-position disc with the F/S arrows)
+
+`[CORRECTED 2026-08-22]` The book's "six pieces designated 93" is **three identical pairs**
+printed on plate B, not six copies of one shape. Each pair is one **trough** (093a — two long
+folds, pointed ends) and one **fin** (093b — a vertical fold plus an L-foot, chamfered
+corner); the fin drops into the trough and the two glue into a single brace. Three braces,
+fitted inside 094 at the middle and five inches above and below. Confirmed against Fig. 10
+and the plate. Bench order: cut all three troughs first, then the fins. Note that
+`source/pieces/093.png` captured only one of the three printed pairs — the shapes repeat, so
+nothing is lost.
 
 **Figure:** Fig. 9 (anchor assembly), Fig. 10 (bob casing with braces), Fig. 11 (anchor/
 escapement wheel relationship).
@@ -519,9 +544,18 @@ escapement tuning parameter.
 | `[STEP fold]` | **098**: bow it (introduce a curve) before gluing — spring tension is intentional |
 | `[STEP glue-cross]` | **098** (bowed) → **097** — the bow creates spring force that holds the bob on the rod |
 
+`[GAP]` `[CORRECTED 2026-08-22]` **The book has a typo in the passage above.** It reads
+"hold the pendulum bob in place on the pendulum rod, piece 94" — but the same paragraph uses
+94 twice as the bob casing ("braces inside piece 94", "glue piece 95 to piece 94"). Both
+cannot be true. Fig. 13 settles it: **070** labels the long vertical rod running the height of
+the movement; **094** and **095** label the bob at the bottom. The sentence means **piece 070**.
+The transcription in `source/transcriptions/instructions.md` stays verbatim as printed; this
+annotation carries the correction. Confirmed with Alan 2026-08-22.
+
 `[MECH]` The three-brace spacing (mid, +5", −5") is a physical measurement — the only
-dimension the book gives in inches. **094** is the pendulum rod casing; brace placement
-maintains its cylindrical shape over the rod's length.
+dimension the book gives in inches. **094** is the pendulum **bob** casing (not the rod
+casing — same typo, corrected 2026-08-22); brace placement maintains its shape over its
+length.
 `[MECH]` **098**'s bow is functional: it must press against the bob to keep it from sliding.
 `[HUMAN]` Bow amount is a tactile judgment — enough spring to hold, not so much it makes
 the bob impossible to slip on or position.
@@ -731,4 +765,15 @@ Valid edges in `claude-work/state/connection-graph.json` for pieces 065–069:
 Missing: any direct edge between 067 and 065/066. Either this joint is mediated through
 069 (067 and 065/066 don't touch directly) or it needs authoring in 067's SVG.
 
-*Total valid edges for anchor cluster: 15 directed (7+4+3+1) = 11 distinct physical joints.*
+*Total valid edges for anchor cluster: 15 directed (7+4+3+1).*
+
+`[CORRECTED 2026-08-22]` Two problems with this table. **First, the arithmetic did not close** —
+it originally read "15 directed (7+4+3+1) = 11 distinct physical joints," and neither reading
+yields 11 (counting the 066→065 reciprocals gives 22 directed; excluding them gives 15 joints).
+The unsupported figure is removed. **Second, the counts are a point-in-time snapshot** taken
+before the marks-lookup ship; at the freeze the whole graph carries 51 declared edges with 30
+resolving. Re-derive from `connection-graph.json` rather than trusting this table.
+
+`[CORRECTED 2026-08-22]` The "Missing: any direct edge between 067 and 065/066" note above
+asked to be re-examined once 067's geometry was resolved. It has been: 067 is authored and
+carries one of the four JSON sidecars in the repository. Nobody re-ran the check.

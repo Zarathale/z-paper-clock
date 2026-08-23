@@ -1154,12 +1154,11 @@
           "b": "c2"
         },
         {
-          "id": "fold-c2-main",
+          "id": "fold-c2-pane3",
           "polarity": "valley",
           "step": null,
-          "a": null,
-          "b": null,
-          "descriptive": "c2-main"
+          "a": "c2",
+          "b": "pane3"
         },
         {
           "id": "fold-c2-sider",
@@ -1226,9 +1225,7 @@
         }
       ],
       "fold_count": 18,
-      "fold_unresolved": [
-        "fold-c2-main"
-      ],
+      "fold_unresolved": [],
       "attach_points": [
         {
           "kind": "attach",

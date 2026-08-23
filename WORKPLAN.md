@@ -1,5 +1,7 @@
 # WORKPLAN.md — z-paper-clock
 
+> **⏹ Doubly frozen.** The whole repository froze on 2026-08-22 at commit `5a6b49b`; this file froze long before that, on 2026-05-04. See `HANDOFF/` for the successor lines.
+
 > **⚠ FROZEN — pre-charter record.** This file was the live work-state surface up to charter sign-off (2026-05-04) and has not been updated since. Per `claude-work/DECISIONS.md` #2, the live surface is now **`claude-work/STATUS.md`** — read that for current per-track state. WORKPLAN.md is preserved here as the decision record of pre-charter thinking; the eight tracks below were carried forward (most reshaped, one closed) into STATUS.md.
 
 _Original framing (pre-2026-05-04, not current): "The active stance. What tracks are open right now, what's the next action on each, what's blocked, what was learned recently. Updated regularly. See `PROJECT-STATE.md` for slow-moving framing; see `ROADMAP.md` for the long milestone arc; see `CLAUDE.md` for working conventions."_

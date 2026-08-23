@@ -308,7 +308,27 @@ A row per decision. Each row captures:
 
 ---
 
-*Last updated: 2026-05-09 — Decision #13 closed: three-mode preview.html (Bench / Cluster / Wall) + sidecar `assembled.transform` block for per-piece pose in cluster-local space. Wall mode deferred until subassembly authoring is far enough along to make it useful. Supersedes #11's anticipated per-edge SE(3) shape with per-piece-in-cluster-local-space. Three CODE_PROMPTs (PR A foundational, PR B Bench transform capture, PR C Cluster mode) to draft next; PR D Wall mode deferred. Pose capture for the pendulum cluster resumes against PR B once it ships.*
+### #14 — The project freezes here and forks into two independently-driven lines
+
+- **Date:** 2026-08-22
+- **Decision:** z-paper-clock is frozen at commit `5a6b49b` (2026-05-10) and branched into two lines that move forward independently and are **not intended to merge**: `main-claude`, continuing under this charter with Claude driving, and `main-gpt`, driven by a ChatGPT agent and free to keep, adapt or discard everything in `claude-work/`. `main` is retired as a trunk — neither line develops on it — and the freeze point is tagged `pivot-2026-08-22`. Per-task branches are `claude/<task>` and `gpt/<task>`. Both lines inherit an identical `HANDOFF/` package and a repo-root `AGENTS.md` for agents that do not read `CLAUDE.md`.
+
+  Before branching, the repository was **reconciled against itself**. Two classes of document, two treatments: decision records (`work/SPEC-3D-VIEWER.md`, `work/SPEC-REGIONS.md`, `WORKPLAN.md`, the 33 archived CODE_PROMPTs) take a dated freeze header and no edits, because editing them would falsify the record; live surfaces (`STATUS.md`, `QUEUE.md`, this file, `CHARTER.md`, `CLAUDE.md`, `LAYER-CONVENTIONS.md`, `README.md`, `PROJECT-STATE.md`, `ENVIRONMENT.md`, `INSTRUCTIONS-ANNOTATED.md`, `pieces.csv`) were corrected in place. `ROADMAP.md` was caught up first, then frozen. One exception to the no-edit rule: the assembly-group table in `SPEC-3D-VIEWER.md` carries bracketed corrections, because a table missing 059 from the escape wheel would actively misdirect M4.
+
+  Four long-standing factual questions were settled against the plates and the printed instructions rather than left open — pieces 074 and 103 were re-sectioned, the 093 brace geometry was resolved from Fig. 10, and a piece-number typo in the book was identified and annotated. See `HANDOFF/RECONCILIATION.md` for the full change record.
+
+- **Why:** The repository went dormant on 2026-05-10 and sat untouched for three and a half months. Its summary surfaces had drifted about a day behind its git log at the moment work stopped — recommending work that had already shipped, reporting a sidecar as missing when it existed, and describing a settled architecture decision as open in five places. A fork multiplies that problem: two caretakers would each independently trust the same wrong documents. Reconciling first makes the frozen state coherent on its own terms, so what each line inherits is a record rather than a puzzle.
+
+  Branching rather than forking into separate repositories keeps `git diff main-gpt main-claude` available, which is the whole point of running two drivers on the same inheritance.
+
+- **Type:** Co-authored (Alan set the direction and confirmed the four piece questions from bench knowledge; Claude did the reconciliation and drafted the package).
+- **Reopen?** Not applicable — this decision *is* the ending. Each successor line owns its own decisions from here, and neither inherits an obligation to keep this ledger going.
+
+---
+
+*Last updated: 2026-08-22 — Decision #14 closed: the project freezes at `5a6b49b` and forks into `main-claude` and `main-gpt`, after a full reconciliation pass. Note for anyone reading older docs: **#4 has been closed since 2026-05-07** and was mis-cited as pending in five places, all corrected at the freeze; #3 remains the only open-but-stable row.*
+
+*Earlier 2026-05-09 — Decision #13 closed: three-mode preview.html (Bench / Cluster / Wall) + sidecar `assembled.transform` block for per-piece pose in cluster-local space. Wall mode deferred until subassembly authoring is far enough along to make it useful. Supersedes #11's anticipated per-edge SE(3) shape with per-piece-in-cluster-local-space. Three CODE_PROMPTs (PR A foundational, PR B Bench transform capture, PR C Cluster mode) to draft next; PR D Wall mode deferred. Pose capture for the pendulum cluster resumes against PR B once it ships.*
 
 *Earlier 2026-05-07 (evening) — Decision #12 closed: parser will consult `marks` for cross-piece feature lookup, codifying the mark-first attach pattern that LAYER-CONVENTIONS.md already documented. CODE_PROMPT pending. Surfaced from a sweep of 093/066/094-100/110 attach-point conventions; full report in session note `2026-05-07-2200_cowork_attach-convention-sweep.md` (forthcoming).*
 

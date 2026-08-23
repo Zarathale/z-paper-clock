@@ -293,7 +293,7 @@ Claude Code works in a worktree (`.claude/worktrees/<auto-name>/`), not the repo
 
 **The right verification split for browser-rendered files:**
 
-- **Code-side (commit gate):** `node --check preview.html` for syntax; `rg` / `grep` for undefined symbol references; file-existence and structural checks. These run reliably in the worktree.
+- **Code-side (commit gate):** syntax check — **not** `node --check preview.html`, which fails on Node 24+ with `ERR_UNKNOWN_FILE_EXTENSION`; extract the `<script>` body to a temp `.js` file first (about five lines of Python) and run `node --check` on that. [Corrected 2026-08-22; CLAUDE.md has carried the right method since 2026-05-10.] Then: `rg` / `grep` for undefined symbol references; file-existence and structural checks. These run reliably in the worktree.
 - **Browser-side (post-merge gate):** Documented in each CODE_PROMPT's "Manual tests" section and in the Verification Checklist's tier (b). Alan opens the file after merge using whatever server he already has running (or `open preview.html` directly for offline-compatible pages). This tier is not optional for `preview.html` PRs — it's the live-browser gate, just owned by Alan rather than Code.
 
 Code's session note should explicitly state which checklist items were verified Code-side and which are deferred to Alan's post-merge manual pass. "Browser verification blocked" is a valid session-note state; it is not a failure — it means the commit gate passed and the browser gate is waiting for Alan.

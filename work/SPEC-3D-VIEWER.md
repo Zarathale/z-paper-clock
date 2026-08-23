@@ -1,6 +1,20 @@
 # 3D Paper-Clock Viewer — Build Spec
 
-**Status:** draft, ready for review
+> **⏹ FROZEN 2026-08-22 — decision record, not current guidance.**
+> Written 2026-04-29/30, before `preview.html` existed. Preserved as written, because it is the record of what was intended; the project then learned otherwise in several places. **Read it with these corrections in hand:**
+>
+> 1. **`work/viewer/` will never be populated.** The doc names it as a live target in a dozen places. `DECISIONS.md` #4 (closed 2026-05-07) puts the production viewer at `claude-work/viewer/`, built fresh at M3.
+> 2. **§"Path forward" is closed, not open.** It says "This decision is open." It was resolved as Option B on 2026-05-07: `preview.html` is the permanent authoring/QA tool, no code shared with the eventual viewer.
+> 3. **`preview.html` is no longer read-only.** The doc states it "never writes back… never modifies anything under `source/` or `work/`." A bridge server and a save-pose affordance now write to `work/pieces/NNN/NNN.json`.
+> 4. **The layer list is incomplete.** `panels` and `attach-points` were added at the 2026-05-05 panels-first pivot (DECISIONS #6, #7); `glue-zones` and `labels` never entered live practice.
+> 5. **Regions are authored now, not derived.** §"SVG-to-3D conversion" describes partitioning the silhouette along fold lines. Panels-first inverted that: the author names every panel and every fold names its two panels.
+> 6. **The trace pipeline described here was never used in production.** Auto-trace produced nothing that survived; all 32 exported SVGs are hand-authored in Affinity Designer.
+> 7. **The estimates are not planning input.** "~120 sidecars, 1–3 minutes each, ≈4 hours total" — four sidecars exist after three weeks of real work.
+> 8. **The assembly-group table below carries inline corrections** — it was wrong in ways that would misdirect M4, so it is the one place this document has been edited.
+>
+> The `preview.html` section near the end is a snapshot as of 2026-05-03 and omits everything after it. For what the tool actually does, read `claude-work/STATUS.md`.
+
+**Status:** frozen 2026-08-22 (was: draft, ready for review)
 **Predecessor docs:** `work/_archive/m1-plate-d-phone/auto-trace-test/RESULTS.md`, `work/_archive/m1-plate-d-phone/RESCAN_FINDINGS.md` (both archived 2026-04-30 with the gen-1 phone scans they document; conclusions still hold)
 **Source materials:** `source/pieces/` (per-piece archive, lossless PNG, populating from chunk-and-crop capture per `source/SCAN-INTAKE-CHECKLIST.md`), `source/scans-chunks/` (multi-piece chunk captures kept as recovery references), `source/transcriptions/` (5 markdown files, scan-independent)
 
@@ -116,13 +130,13 @@ The clock's assembly graph is a tree of nested `Object3D` groups, with leaves be
 |---|---|---|
 | `framework` | §II.A | 1, 2, 3, 5, 6, 7, 8, 9, 11, 12–17, 19, 20, 21, 22, 25, 27, 28, 29, 30, 31 |
 | `wall-bracket` | §II.A | 23, 24, 25, 26 |
-| `motor-wheel` | §II.B.1 | 33, 34, 35, 36, 37, 50, 90 |
-| `middle-wheel` | §II.B.2 | 39, 50–57, 53, 58 |
-| `escapement-wheel` | §II.B.3 | 58, 60, 61–66 |
-| `wheel-mounting` | §II.B.4 | 18, 19, 27, 28 |
-| `anchor-and-pendulum` | §II.C | 67, 68, 69, 70, 71, 72, 92, 92a, 94, 95, 96, 97, 98, 99, 100 |
-| `hands-mechanism` | §II.D | 4, 75, 76, 77, 81, 84, 89, 91, 108, 109 |
-| `weight` | §II.E | 101, 102 |
+| `motor-wheel` | §II.B.1 | 33, 34, 35, 36, 37, 50, 90 → **[corrected: 33–49. 50 is middle wheel; 90 is the hand pulley; the 038–049 pulley sub-assembly was missing entirely]** |
+| `middle-wheel` | §II.B.2 | 39, 50–57, 53, 58 → **[corrected: 50–57. 53 listed twice; 58 is escapement; 39 belongs to the motor-wheel pulley stack]** |
+| `escapement-wheel` | §II.B.3 | 58, 60, 61–66 → **[corrected: 58–064. **059 was missing** — the escape wheel is 058+059 glued back to back per §II.B.3. 065 and 066 are anchor pieces and do not belong here]** |
+| `wheel-mounting` | §II.B.4 | 18, 19, 27, 28 **[flagged: 018/019 pinch the pendulum blade per §II.C; 027/028 are pendulum support per Fig. 2. Group membership does not match the book's use of these pieces]** |
+| `anchor-and-pendulum` | §II.C | 67, 68, 69, 70, 71, 72, 92, 92a, 94, 95, 96, 97, 98, 99, 100 → **[corrected: 065–072, 093a/093b, 094–100. 092/092a are §II.D separators; 093 (the bob braces) was missing]** |
+| `hands-mechanism` | §II.D | 4, 75, 76, 77, 81, 84, 89, 91, 108, 109 → **[corrected: 073–092a + 108, 109. Omitted 073, **074**, 078, 079, 080, **087**, 088, 090, 092, 092a — including 087, the reduction-gear disc that was on the bench when work stopped]** |
+| `weight` | §II.E | 101, 102 → **[corrected: 101–106, and **103** is the cylinder bottom, not a reduction gear]** |
 | `face-and-case` | §II.F | 110, 111, 112, 112a, 113–116, 117, 118, 119, 121 |
 
 Each group lives in its own `assemblies/<group>.json` listing the pieces it contains, the local transform of each piece (translation in mm, rotation in radians, fold-angle for hinged pieces), and any axles passing through the group. The viewer composes groups via a top-level `assembly.json` that places each group in clock-coordinate space.

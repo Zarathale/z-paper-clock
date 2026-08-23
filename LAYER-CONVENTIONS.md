@@ -377,13 +377,13 @@ The cross-piece edges at a glance, with how each resolves:
 
 | from | → | to | id authored | matches | via |
 |---|---|---|---|---|---|
-| 065 | → | 066 | `attach-b66 … attach-h66` | 066's panels `tabb … tabg` and `b65 … h65` | panel-tab / panel-substring |
+| 065 | → | 066 | `attach-b66 … attach-h66` | 066's panels `tabb … tabg` and `b65 … h65` | panel-tab / **marks-landing-self** |
 | 066 | → | 065 | (reverse of the above; parser infers landing on 066 from 065's attach) | `attach-b66 … attach-h66` on 065 | attach-attach-letter |
 | 066 | → | 068 | `landing-j68` (in attach-points) | 068's bare `j` in attach-points | attach-letter-target |
-| 068 | → | 069 | `attach-g69, attach-h69, attach-i69` | 069's panels `g`, `bh`, `ai` | panel-exact, panel-substring (×2) |
+| 068 | → | 069 | `attach-g69, attach-h69, attach-i69` | 069's panels `g`, `bh`, `ai` | panel-exact, **marks-exact** (×2) |
 | 067 | → | 069 | `landing-c69 … landing-f69` (in marks) | 069's `tabc … tabf` panels | panel-tab |
 
-Every edge resolves; nothing falls back to fuzzy-on-marks (steps 4–5, 8 of the lookup chain) because every authored letter has either a panel-direct match, a tab-form panel match, or a bare letter target. The mark-anchored lookup steps exist for cases like 093 (no panel/tab match available — anchor IS in marks) and for the multi-instance bob-cluster cases (097 → 099, where 099's 12×`a` marks are the right targets and panel-substring against `main` was a false-positive accident).
+[Corrected 2026-08-22.] Every edge resolves, but **not all through panels** — the marks-lookup ship (2026-05-10, DECISIONS #12) moved several of these onto the mark-anchored steps of the chain, which is the documented intent of the mark-first pattern rather than a fallback. Two rows in the table above were relabelled accordingly; the same ship also shifted 093b→093a, 094→095 and 097→099 to mark-anchored resolution and took the graph from 24 to 30 resolving edges. The mark-anchored lookup steps exist for cases like 093 (no panel/tab match available — anchor IS in marks) and for the multi-instance bob-cluster cases (097 → 099, where 099's 12×`a` marks are the right targets and panel-substring against `main` was a false-positive accident).
 
 **The naming pattern to copy.** Across all three pieces, the pairing of a cross-piece letter is always:
 

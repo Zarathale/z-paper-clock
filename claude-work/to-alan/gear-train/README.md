@@ -4,6 +4,8 @@
 **Driving:** CHARTER §6 commitment #4 (bring authoring to a sustainable rate). Anchor cluster (065–072) shipped as the first end-to-end batch; the gear-train stacks are the next coherent block.
 **Stakes:** ~50 pieces, the largest authoring block to date. This brief is the top-down map; per-stack cheat sheets land as separate `to-alan/` drops when each stack comes off the bench.
 
+> **⏹ NEVER STARTED.** This brief was written 2026-05-09 and the work it describes was not begun before the project froze on 2026-08-22. Piece **087** (reduction-gear disc) had an Affinity source underway and no export; a partial motor-wheel set (033–049) likewise has `.af` sources without SVG exports. Everything else here is unbuilt. The brief is preserved intact as the best available map of the block, and the four questions at the end were answered at the freeze — see the block appended below them. Whichever line picks up the gear train inherits this as a starting point, not as an assignment.
+
 ---
 
 ## What this brief is, and isn't
@@ -259,6 +261,15 @@ This is a planning brief, not a per-piece authoring task — there's no "this la
 - **The 074 + 103 + "087 = escape wheel" corrections** — agree these should land in `pieces.csv` + embedded-labels + STATUS/QUEUE? Or want me to dig further before we touch source-of-truth files?
 - **Function-block schema draft** — does the JSON shape above look right? Want a more rigorous proposal as its own design beat, or settle it informally at the bench when you author the first one?
 - **Brief length** — this is ~330 lines vs. 066-068's ~140 lines for two pieces. The per-stack maps are the bulk of it. Acceptable for a once-per-block planning brief, or compress further?
+
+### Answers, recorded at the freeze (2026-08-22)
+
+Three of the four are settled. The fourth is handed forward.
+
+- **The corrections — settled, and they landed.** Alan confirmed all of them against the plates on 2026-08-22. **103** is the weight-cylinder bottom, not a reduction gear: what read as gear teeth are trapezoidal glue tabs that fold up inside tube 101, and its diameter matches the lid discs 104/106 rather than anything in the gear family. **074** is the rim strip of the minute-hand wheel, not an anchor-pendulum piece: it zigzags because it wraps the twelve-point star profile of 073 and 075, and both of those pieces label it (`b74` three times on 073, `74` on 075). Both rows in `pieces.csv` are corrected. The **"087 = escape wheel"** wording had already been fixed on 2026-05-09 in commit `b913166`, the same commit that created this brief — the escape wheel is 058 + 059 glued back to back per §II.B.3, and 087 is the reduction-gear disc. Only this brief still described that one as outstanding.
+- **Brief length — moot.** It was a question about a format that would repeat for the drive-weight and face/case blocks. Those briefs were never written.
+- **Order priority within a stack — open, handed forward.** Motor-wheel-first remains the recommendation on the merits: it unblocks both the timing chain and the display chain. But there is a real argument for the escape wheel instead, precisely because it is small and it forces the function-block conversation, and nobody adjudicated it.
+- **Function-block schema — open, handed forward, and this is the more consequential one.** The draft shape in this brief has never met a real piece. Zero `function` blocks exist anywhere in the repository. The schema locks itself the moment someone authors the first one, most likely on 058/059, and whichever line gets there first should expect to revise it on contact rather than trusting the draft.
 
 ---
 

@@ -1,5 +1,7 @@
 # QUEUE.md — what Alan should author next
 
+> **⏹ FROZEN 2026-08-22 — this queue is closed.** Nothing is waiting to be pulled. The entries below are preserved as the record of what was next when work stopped on 2026-05-10, with corrections applied at the freeze. A successor line should build its own queue rather than working this one.
+
 _Pull-based per CHARTER §3 + §9. Alan checks this when there's bench time. Claude maintains the ordering; Alan can reorder or push back. Kept modest in size on purpose — fewer asks, more thinking per ask. When a queue entry ships, it gets struck through here and migrates to the relevant STATUS track's recent log._
 
 ---
@@ -42,20 +44,22 @@ See sessions for the code ship and the 16:00 Cowork design session.
 
 → **Already fixed.** `fold-c2-pane3` bridges the slot cluster into the pane chain. Two-component banner should be gone.
 
-### 1. Closure-fold derivation — send to Code (`CODE_PROMPT_preview-html-closure-derive.md`)
+### ~~1. Closure-fold derivation — send to Code (`CODE_PROMPT_preview-html-closure-derive.md`)~~ → **shipped as PR #29, 2026-05-10**
 
-`CODE_PROMPT_preview-html-closure-derive.md` is at repo root, `ready-for-code`. Implements **derive-one** for the closure fold (`fold-tabaa-pane7` on 066): a "Lock ⊗" toggle causes the closure angle to be computed geometrically from the `landing-tabaa` mark whenever any pane-strip fold changes. Also fixes the Σ readout and Equal button to handle ±360° correctly.
+→ Shipped the same evening this entry was written; the prompt is archived to `_archive/code-prompts/`. Implemented **derive-one** for the closure fold (`fold-tabaa-pane7` on 066): a "Lock ⊗" toggle causes the closure angle to be computed geometrically from the `landing-tabaa` mark whenever any pane-strip fold changes. Also fixes the Σ readout and Equal button to handle ±360° correctly.
 
 No SVG authoring prereqs — pure `preview.html` JS change.
 
-### 2. Capture anchor cluster pose sidecars — 066 and 068
+### 2. Capture anchor cluster pose sidecars — ~~066 and~~ 068
 
-**Current sidecar state:** 069 ✅ (folds + transform), 067 ✅ (transform; no fold paths authored), 065 ✅ (transform; no fold paths authored). Missing: **066** and **068** — neither has a sidecar yet.
+**Sidecar state at freeze:** 069 ✅ (folds + transform), 067 ✅ (transform), 065 ✅ (transform), 066 ✅ (folds + transform, the latter computed 2026-05-10 evening in commit `5a6b49b` and never browser-verified). Missing: **068** only.
 
 - **066** — 22 folds across four groups. The new grouped sliders (PR #28) make this much more manageable: pane-strip group has a Σ readout + Equal button, tab-flap/closure groups have a master sub-slider. Fold to assembled pose, save.
 - **068** — fold bug is fixed; no blocker. Load in Bench mode, fold the slot cluster (c1/c2/sidel/sider) and the main pane chain, save.
 
-Once both sidecars land, regenerate `connection-graph.json` so `pivot_clusters.anchor` reflects all five members: `python3.12 claude-work/scripts/build_assembly_graph.py` from repo root. After that, the Cluster mode authoring loop (Soon #1) is fully testable.
+**⚠ Corrected 2026-08-22 — this next step was wrong.** The entry said to regenerate `connection-graph.json` so `pivot_clusters.anchor` reflects all five members. Regenerating will never do that. `pivot_clusters` is derived from `pivot-<name>` markers in the **`attach-points` layer of the SVG**, not from sidecars — and only 067 and 069 declare `pivot-anchor`. (065 carries `anchor-pivot` in its `axles` layer, which names its own axle and is a different thing.) Verified by regenerating at the freeze: the output is byte-identical and the cluster stays `[067, 069]`.
+
+To get five members, someone has to **author** `pivot-anchor` attach-points on 065, 066 and 068. That is bench work, not a script run. Worth deciding first whether the cluster should mean "pieces sharing this physical axle" (then author them) or "pieces that pivot on it" (then two is right and 065/066/068 are rigidly attached, which is what DECISIONS #7.19's derived-pivots rule already assumes).
 
 ---
 
@@ -63,7 +67,7 @@ Once both sidecars land, regenerate `connection-graph.json` so `pivot_clusters.a
 
 ### 1. Cluster-pose authoring loop (post-PR-C) — Alan
 
-PR C (preview-html-cluster-mode) shipped 2026-05-10 — `_archive/code-prompts/CODE_PROMPT_preview-html-cluster-mode.md` is the decision record. The cluster-mode authoring loop is now the next-up Alan-side task: load Cluster → `anchor`, manually adjust 065/066/067/068's transforms (only 069 has a saved sidecar), Save selected piece → merge each JSON snippet by hand → reload to confirm. Distance readouts between authored attach/landing pairs guide the alignment. After all five anchor sidecars land, regenerate connection-graph.json so `pivot_clusters.anchor` reflects the full transitive membership (currently still seeded `[067, 069]`).
+PR C (preview-html-cluster-mode) shipped 2026-05-10 — `_archive/code-prompts/CODE_PROMPT_preview-html-cluster-mode.md` is the decision record. The cluster-mode authoring loop is now the next-up Alan-side task: load Cluster → `anchor`, manually adjust 065/066/067/068's transforms (only 069 has a saved sidecar), Save selected piece → merge each JSON snippet by hand → reload to confirm. Distance readouts between authored attach/landing pairs guide the alignment. ~~After all five anchor sidecars land, regenerate connection-graph.json so `pivot_clusters.anchor` reflects the full transitive membership.~~ See the correction under Now #2 — regeneration cannot do this; the markers have to be authored.
 
 ### 2. 097 period-suffix convention — Cowork beat
 

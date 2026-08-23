@@ -279,4 +279,33 @@ Substantive amendments stack here per §12. The original §10 table stays as the
 
 ---
 
-*Last updated: 2026-05-10 (amendment A3: `alan-work/` retired; `work/pieces/` accepted as canonical authoring location; §4 folder tree, read/write rules, rename policy, and §5 sidecar path updated). Earlier 2026-05-10 (amendment A2: `site/` folder added, outward-facing storytelling track opened, co-owned). Earlier 2026-05-05 (amendment A1: tool-acquisition directive strengthened in §9). Earlier 2026-05-04 (signed v1.0; effective. Amendment policy added as §12. Both Alan and Claude signed at kick-off.)*
+### A4 — The charter closes; the project freezes and forks (§6, §11)
+
+- **Date:** 2026-08-22
+- **What changed:** This charter is **closed**. It governed the project from 2026-05-04 to 2026-05-10 — twelve working days, 171 commits, 94 session notes — and is preserved as the record of how that period was run. `main-claude` inherits it and may continue under it; `main-gpt` inherits it as background and is under no obligation to it. Neither line is bound to keep amending this document.
+
+**Honest scorecard against §6.**
+
+| # | Commitment | Outcome |
+|---|---|---|
+| 1 | Finish onboarding — six pieces still to scan | ✅ **Met.** Closed 2026-05-05 at 123/123. The six named pieces landed; plate B's brackets 013–017 turned out to be clones of 012. |
+| 2 | First end-to-end piece, proven in 3D | ✅ **Met, and then some.** Not one piece but the whole anchor cluster — 065/066/067/068/069 authored panels-first, placed in a multi-piece scene, pivot-aligned, with poses saved back to sidecars. The seam between Alan's authoring and Claude's tooling held. |
+| 3 | Decide the preview.html ↔ viewer architecture | ✅ **Met.** Closed 2026-05-07 as Option B (DECISIONS #4). `preview.html` is permanent; the real viewer gets written fresh at M3. |
+| 4 | Bring authoring up to a sustainable rate | ◐ **Partly met.** The conventions did get clear — 21 elements ratified in DECISIONS #7, and panels-first survived every piece thrown at it. The tooling did become responsive: a bridge server, a snap tool, a guided stepper, grouped fold sliders. But the rate itself never arrived. 32 SVGs of 123 pieces, and only four sidecars. The gear-train brief — the block that would have proved the rate — was written on 2026-05-09 and never started. |
+| 5 | Assemble the clock (M4) | ❌ **Not reached.** Pieces can be posed by hand and saved. Nothing solves constraints; no assembled clock exists. |
+| 6 | Polish + ship v0.1 to a public URL | ❌ **Not reached.** |
+| 7 | Mechanism animation (stretch) | ❌ **Not reached.** No `function` block was ever authored on any piece; the schema is still a draft awaiting its first real use on the escape wheel. |
+| A2 | A public-face site | ◐ **Started, not shipped.** Domain bought, hosting arranged, strategy written, v0 homepage drafted — held on two blocks that only Alan could write, and never deployed. |
+
+Three of seven met, two partly, three not reached — and the three not reached are the three that would have produced a clock. That is an accurate account of a hobby project that ran hard for twelve days and then stopped.
+
+**What the charter got right.** The role inversion worked. Putting Claude on direction and Alan on the bench produced more in twelve days than the preceding arrangement had, and the pull-based queue with its deliberate three-to-five-item ceiling kept the asks matched to the one real constraint — a person at a desk with an X-acto knife. The decision ledger with explicit reopen triggers is the single most reusable artifact here; it is why, three months later, it was possible to say with confidence which calls were settled.
+
+**What it got wrong.** The live surfaces were hand-maintained summaries of a reality that moved faster than the summaries did, and on the last day they fell a full day behind. §9's honesty commitment — "aspirational vs. shipped clearly distinguished" — held inside individual documents and failed between them. A successor line should either generate those surfaces or accept that they lag and say so on their face.
+
+- **Why:** A charter that governs nothing should say so. Leaving it in the present tense would invite a successor to treat a closed arrangement as a live one — the same failure mode, at document scale, that the reconciliation pass spent its time fixing.
+- **Initials:** Alan ☑ (directed the wrap-up and confirmed the piece questions, 2026-08-22) / Claude ☑ (reconciled and drafted, same session)
+
+---
+
+*Last updated: 2026-08-22 (amendment A4: charter closed; honest scorecard against §6 recorded; project frozen at `5a6b49b` and forked into `main-claude` / `main-gpt`). Earlier 2026-05-10 (amendment A3: `alan-work/` retired; `work/pieces/` accepted as canonical authoring location; §4 folder tree, read/write rules, rename policy, and §5 sidecar path updated). Earlier 2026-05-10 (amendment A2: `site/` folder added, outward-facing storytelling track opened, co-owned). Earlier 2026-05-05 (amendment A1: tool-acquisition directive strengthened in §9). Earlier 2026-05-04 (signed v1.0; effective. Amendment policy added as §12. Both Alan and Claude signed at kick-off.)*

@@ -50,8 +50,8 @@ id,plate,section,bucket,status,notes
 015,B,framework,,captured,"Bracket piece; clone of 012 (identical drawing; previous separate scan reconciled 2026-05-05)"
 016,B,framework,,captured,"Bracket piece; clone of 012 (identical drawing)"
 017,B,framework,,captured,"Bracket piece; clone of 012 (identical drawing)"
-093a,B,anchor-pendulum,,traced,"Pendulum-bob inner brace half; pairs with 093b to form one brace assembly. Replaces former row 093 (split 2026-05-05); brace template instantiated 6 times in piece 94 with per-instance a/b orientations. Book wording: 'six pieces designated 93' glued 'to form three separate braces' — build deviates to 6 instances."
-093b,B,anchor-pendulum,,traced,"Pendulum-bob inner brace half; pairs with 093a. See 093a notes."
+093a,B,anchor-pendulum,,traced,"Pendulum-bob brace: the trough half (two long folds, pointed ends). Pairs with 093b (the fin) to form one brace. Plate B prints three identical pairs - the book's six pieces designated 93 - which glue into three braces, fitted inside 094 at the middle and five inches above and below. See Fig. 10. Bench order: cut all three troughs first, then the fins. Confirmed 2026-08-22 against plate B + Fig. 10 + SII.C. Note: source/pieces/093.png captures one pair of the three."
+093b,B,anchor-pendulum,,traced,"Pendulum-bob brace: the fin half (vertical fold plus L-foot, chamfered corner). Drops into 093a's trough and glues to form one brace. See 093a notes."
 113,B,face-case,,captured,Cross-shaped brace piece for face frame (1 of 4: 113-116)
 114,B,face-case,,captured,Cross-shaped brace piece for face frame
 115,B,face-case,,captured,Cross-shaped brace piece for face frame
@@ -79,12 +79,12 @@ id,plate,section,bucket,status,notes
 092,D,hands,auto-trace-clean,captured,Disc spacer; glue to 1mm cardboard; aligns to piece 4
 039,E,motor-wheel,,captured,Accordion-pleated pulley column (glues to 38)
 060,E,escapement,,captured,Pinion for escapement wheel (rolled cylinder)
-074,E,anchor-pendulum,,captured,Thin strip (hook form) at bottom of plate E; small fragment also visible on H
+074,E,hands,,captured,"Rim strip of the minute-hand wheel; wraps the 12-point star profile between wheels 073 and 075 (both label it: b74 x3 on 073, 74 on 075). Confirmed 2026-08-22 against plate F + SII.D. Was mis-filed as anchor-pendulum."
 078,E,hands,,captured,Hour-hand wheel; glue back to back to 79 before cutting teeth
 079,E,hands,,captured,Hour-hand wheel backer — plain blank disc; glued to 078 before cutting teeth (teeth cut through both layers simultaneously); no folds/cutouts/connection labels of its own
 082,E,reduction-gear,,captured,Reduction-gear accordion strip
 083,E,reduction-gear,,captured,Reduction-gear accordion strip
-103,E,reduction-gear,,captured,Small reduction gear with central spiral pattern
+103,E,weight,,captured,"Weight-cylinder bottom disc; rim tabs fold up and glue inside tube 101 - they are glue tabs, not gear teeth. Confirmed 2026-08-22 against SII.E + plate E. Was mis-filed as reduction-gear."
 104,E,weight,,captured,Weight-cylinder lid disc; glue back to back to 106
 105,E,weight,,captured,Sawtooth gear-teeth strip
 106,E,weight,,captured,Weight-cylinder lid disc; partner to 104

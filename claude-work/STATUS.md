@@ -4,6 +4,8 @@ _The live working surface, post-charter. What tracks are open right now, what's 
 
 > **Succession.** This file replaces `WORKPLAN.md` as of charter sign-off (2026-05-04). `WORKPLAN.md` is now legacy — frozen as the pre-charter record. The eight tracks below are carried forward (most reshaped, one closed). For pre-2026-05-04 history on any track, the WORKPLAN log is still the source.
 
+> **⏹ FROZEN 2026-08-22.** Work on this repository stopped on 2026-05-10 at commit `5a6b49b`. This file was reconciled against the git log and the working tree on 2026-08-22 and is accurate as of that reconciliation; nothing maintains it after that date. The project forked here into `main-claude` and `main-gpt` — see `HANDOFF/` and `claude-work/DECISIONS.md` #14. Track states below describe **where each track stood when the pen was put down**, not instructions to a live session.
+
 ---
 
 ## How this works
@@ -78,7 +80,7 @@ next_action: 087 export landing in `work/pieces/087/` (reduction-gear disc — f
 
 **Hypothesis.** The actual current bottleneck. Conventions now stable post-DECISIONS #7. Each new piece applies the convention and stress-tests it; LAYER-CONVENTIONS.md is the live reference.
 
-**Status detail.** Panels-first SVGs authored: 065 / 066 / 067 / 068 / 069 / 070 / 071 / 072 / 094 / 095 / 096 / 097 / 098 / 099 / 100 / 110. Connection graph at `claude-work/state/connection-graph.{md,json}` resolves 24/24 cross-piece edges across the anchor-pendulum-bob cluster. Pre-pivot cut-line-first pieces (001 / 002 / 058 / 113–116) stay as legacy; no bulk re-authoring planned. 093a/093b live under `work/pieces/093/` but `build_assembly_graph.py`'s main loop only globs `<dirname>.svg`, so the split halves are silently absent from the graph today (script extension queued in QUEUE Soon #4 — not blocking).
+**Status detail.** Panels-first SVGs authored: 065 / 066 / 067 / 068 / 069 / 070 / 071 / 072 / 094 / 095 / 096 / 097 / 098 / 099 / 100 / 110. Connection graph at `claude-work/state/connection-graph.{md,json}`. [Corrected 2026-08-22: the graph carries **51 declared cross-piece edges, 30 of which resolve**, across 28 panels-first pieces. The older "24/24" figure counted only the anchor-pendulum-bob subset before the marks-lookup ship. Edges that do not resolve are overwhelmingly references to pieces nobody has authored yet, not authoring errors.] Pre-pivot cut-line-first pieces (001 / 002 / 058 / 113–116) stay as legacy; no bulk re-authoring planned. ~~093a/093b are silently absent from the graph~~ — fixed by the marks-lookup ship (2026-05-10), which globs `*.svg` per piece directory. Both halves are in the graph and `093b→093a` resolves via `marks-exact`.
 
 **Open questions.**
 
@@ -110,12 +112,14 @@ next_action: 087 export landing in `work/pieces/087/` (reduction-gear disc — f
 ```yaml
 status: active
 last_updated: 2026-05-10
-next_action: Ship `CODE_PROMPT_preview-html-closure-derive.md` to Code (ready-for-code at repo root). Implements derive-one for the closure fold on 066 — Lock ⊗ toggle derives `fold-tabaa-pane7` geometrically from `landing-tabaa` mark; also fixes Σ ±360° readout. After that: capture 066 + 068 sidecars.
+next_action: [FROZEN] Closure-derive shipped as PR #29 (2026-05-10) and 066's transform was computed the same evening — both after this field was last written. What remained when work stopped: (a) browser-verify 066's computed translation [-23.9, -70.8, 0] in a Cluster scene of 065,066,067; (b) test the ring-lock event delegation fix, which was never exercised; (c) capture 068's pose sidecar — its fold bug is fixed, nothing blocks it; (d) decide the anchor-cluster Z-depth question (065 to +10mm, 067 to -10mm, or leave both at 0 as an accepted approximation).
 ```
 
-**Hypothesis.** A single-file HTML preview tool is the right substrate for testing SVG authoring conventions while the eventual viewer is still upstream. Each new capability gets its own CODE_PROMPT and ships independently. Architecture call (DECISIONS #4) deferred until enough capabilities pile up to force the question.
+**Hypothesis.** A single-file HTML preview tool is the right substrate for testing SVG authoring conventions while the eventual viewer is still upstream. Each new capability gets its own CODE_PROMPT and ships independently. ~~Architecture call (DECISIONS #4) deferred~~ — **closed 2026-05-07 as Option B**: `preview.html` is the permanent authoring/QA tool and a fresh viewer gets built at `claude-work/viewer/` when M3 is imminent.
 
 **What's shipped (relevant to current state).**
+
+> [Added 2026-08-22 — this list stopped at PR B and understated the tool by seven ships.] Also shipped, all merged before the freeze: **parser marks-lookup** (PR #22), **the "→ Claude" bridge button** (PR #23), **Cluster mode multi-piece authoring** (PR #24), **snap-to-connection-point** (PR #25), **direct sidecar save via the bridge** (PR #26), **the guided assembly stepper** (PR #27), **grouped fold sliders** (PR #28), and **derive-one closure folds** (PR #29). Anyone reading only the bullets below will badly underestimate what `preview.html` can do.
 
 - **Foundational interaction + cutouts** (PR A, 2026-05-10) — cutouts as `THREE.Shape` holes on both front+back slabs; slider+number-entry bidirectional; camera lock/free toggle; TransformControls click-drag on piece (TC hidden in free-camera mode); RGB axes helper + corner mini-gizmo; worktable backdrop; Bench/Cluster mode toggle scaffold (Cluster stub). Manual visual check needed (gizmo paint, TC handles, worktable — headless browser can't verify rAF-dependent rendering). See `sessions/2026-05-10-0335_code_preview-html-bench-cluster-foundation.md`.
 - **Bench mode transform capture** (PR B, 2026-05-09) — `computePieceOrigin` (pivot-anchor > axles[0] > centroid), Transform panel with 6 sliders (X/Y/Z mm + rX/rY/rZ deg), sidecar `assembled.transform` read+write, bidirectional slider↔TC sync. See `sessions/2026-05-09-2219_code_preview-html-bench-transform.md`.
@@ -127,14 +131,15 @@ next_action: Ship `CODE_PROMPT_preview-html-closure-derive.md` to Code (ready-fo
 
 **Open questions.**
 
-- Architecture call (DECISIONS #4: graduate into `work/viewer/`, stay separate, or replace) — deferred. Multi-piece scene + assembled-pose will likely settle it.
+- ~~Architecture call (DECISIONS #4)~~ — **closed 2026-05-07, Option B.** `preview.html` stays as the permanent authoring/QA tool; `claude-work/viewer/` is built fresh in TypeScript when M3 is imminent; no code is shared. `work/viewer/` was always an empty stub and will never be populated.
 - **Inter-piece assembled pose** — today scene mode places pieces relative to each other only via shared pivots (one cluster: `anchor`, joining 067+069). General per-edge transforms (tab/landing pose registration) is the M4 work and lives separately. Worth surfacing as a fresh track once assembled-pose ships per-piece.
 - **097 period-suffix convention** — `attach-a99.{1..5}` pattern: does multi-instance marks resolution already cover the ambiguity, or does a new suffix convention need authoring? From marks-lookup session note: "worth a Cowork beat before authoring." Not blocking anything yet.
 - 099's curved-fold sliders (`fold-insidetabs`, `fold-outsidetabs`) produce approximate movement — M6-territory per session note.
 
 **Recent log.**
 
-- 2026-05-10 (evening, third pass): fold-groups shipped (PR #28). `classifyFoldId()` + grouped Bench-mode fold slider panel. QUEUE.md updated; CLAUDE.md node --check caveat fixed (Node 24+). Sidecar state: 069 ✅ (folds+transform), 067 ✅ (transform only, rZ=−68° cluster/pivot-anchor), 065 ✅ (transform only, rZ=−72.6° world/axles[0]). 066 + 068 still missing entirely; 068 blocked by two-component fold bug.
+- **2026-08-22 (reconciliation, no code):** track reconciled at the freeze. Two ships post-dated this file's last update and are recorded here: **closure-derive (PR #29)** — derive-one for `fold-tabaa-pane7` on 066 via a Lock ⊗ toggle reading the `landing-tabaa` mark, plus the ±360° Σ readout fix; and **066 pivot-box geometry** (`5a6b49b`) — seven pane heights resolved to a cyclic-polygon circumradius of 31.2 mm, closure gap 0.53 mm at the saved fold angles, `assembled.transform.translation` written as `[-23.9, -70.8, 0]`. Neither was verified in a browser.
+- 2026-05-10 (evening, third pass): fold-groups shipped (PR #28). `classifyFoldId()` + grouped Bench-mode fold slider panel. QUEUE.md updated; CLAUDE.md node --check caveat fixed (Node 24+). Sidecar state: 069 ✅ (folds+transform), 067 ✅ (transform only, rZ=−68° cluster/pivot-anchor), 065 ✅ (transform only, rZ=−72.6° world/axles[0]). [Corrected 2026-08-22: 066's sidecar already existed when this was written and was extended the same evening; 068 is the only anchor-cluster member without one, and its fold bug was fixed by `fold-c2-pane3` — see QUEUE.md in this same commit.]
 - 2026-05-10 (evening, second pass): `CODE_PROMPT_preview-html-fold-groups.md` drafted and at repo root, ready-for-code. 5 tasks: `classifyFoldId()` helper (regex patterns for pane-strip/closure/tab-flap/cross-piece), CSS fold group styles, refactored fold slider builder (collect-then-render pattern; flat fallback when no groups matched), pane-strip group controls (sum readout + Equal/Flat buttons), tab-flap/closure group controls (master sub-slider + Flat/90° buttons). Driving use case: piece 066 (22 folds across 4 groups). Guided stepper shipped earlier this session.
 - 2026-05-10 (evening): `CODE_PROMPT_preview-html-guided-stepper.md` drafted and at repo root, ready-for-code. 12 tasks: "Guide" toggle button in cluster controls, guided panel section in `#cluster-panel`, state variables + sequence loader (fetches `claude-work/state/guided_sequence_anchor.json`), `renderGuidedPanel` with type-badge color map, `applyGuidedStepBehavior` (snap-connection auto-activates snap tool; fold auto-selects piece), `highlightGuidedPieces` (amber emissive on current step's pieces), lock-shape confirm modal, auto-advance hooks in `snapAllPairs` and `loadClusterPieces`. 10-step browser manual test. Also: charter amendment A3 recorded — `alan-work/` retired, `work/pieces/` accepted as canonical authoring location.
 - 2026-05-10 (10:40): Guided assembly design session. Step taxonomy settled (open-ended typed steps; `lock-shape` replaces "let it dry"; `glue-no` for explicit no-glue callouts). Two permanent artifacts produced: `claude-work/INSTRUCTIONS-ANNOTATED.md` (full annotated read of all assembly instructions — permanent reference, no need to re-read source in future sessions) and `claude-work/state/guided_sequence_anchor.json` (68-step §II.C guided sequence for anchor cluster, 24 steps requiring human judgment, full `depends_on` DAG). `CODE_PROMPT_preview-html-snap.md` revised: field-name bugs fixed (`prov`→`provenance`, `partner_match`→`matched_panel`, `tab`/`letter` kind-asymmetry), verification checklist corrected (pivot-anchor sphere type doesn't exist; replaced with real 067↔069 connections), bidirectional `findPartners` added, `edgeKind` undefined in `snapPair` fixed, progress panel (Zone A) added, large-residual yellow banner added, `assembled.snapped_connections` sidecar field added. See `sessions/2026-05-10-1040_cowork_guided-assembly-design.md`.
@@ -201,10 +206,10 @@ next_action: No active work until panels-first surfaces specific design needs. S
 ```yaml
 status: active (executing)
 last_updated: 2026-05-06
-next_action: No Claude-side blockers. Convention is stable and proven across 16 panels-first pieces. Continue into each new authoring batch as it lands. Reopen for design if a new piece-type surfaces something the 21-point lock-in doesn't cover.
+next_action: No Claude-side blockers. Convention is stable and proven across the panels-first corpus (28 pieces in the graph at freeze). Continue into each new authoring batch as it lands. Reopen for design if a new piece-type surfaces something the 21-point lock-in doesn't cover.
 ```
 
-**Decision landed: panels-first (B) + authored-vs-derived (D).** See DECISIONS #6 + #7 for full shape. Proved out across a 9-piece anchor-pendulum batch; 24/24 cross-piece edges valid. Multi-piece scene assembly (next Code session) is the execution milestone that shows the model working end-to-end.
+**Decision landed: panels-first (B) + authored-vs-derived (D).** See DECISIONS #6 + #7 for full shape. Proved out across a 9-piece anchor-pendulum batch. [At freeze: 28 panels-first pieces, 51 declared edges, 30 resolving.] Multi-piece scene assembly (next Code session) is the execution milestone that shows the model working end-to-end.
 
 **Recent log.**
 
@@ -221,6 +226,33 @@ status: killed
 closed: 2026-05-06
 closed_reason: Absorbed into main authoring + multi-piece scene tracks. 069 (pendulum arm) and 094-098 (pendulum bob) are authored panels-first and in the connection graph. The "first end-to-end" milestone is now the anchor cluster in multi-piece scene assembly — a richer proof than the original pendulum-only POC. G1/G2 grouping + F1 folding still come through the same pathway; they just don't need their own track.
 ```
+
+---
+
+## Track: Public-facing site (`site/`)
+
+```yaml
+status: active-at-freeze
+last_updated: 2026-08-22
+next_action: [FROZEN] Two `.todo-alan` DRAFT blocks in `site/build/index.html` await Alan's own words — the hero one-liner and the long-arc memoir section. Neither can be written by Claude; CHARTER A2 reserves personal-arc content and anything in Alan's voice to him. After that: settle how `/charter` renders (verbatim, curated, or summary-with-link), then first deploy.
+```
+
+**Hypothesis.** The project deserves an outward face, and the collaboration is part of what it is about — not a footnote to it. Angle A (the long-arc memoir: built one in the mid-1990s, rebuilding it three decades later with an AI collaborator) frames it; Angle C (open notebook, honest about mid-flight state) is the substance; Angle B (the 3D viewer as headline) waits for M3+.
+
+**Status detail.** Opened by **charter amendment A2** (2026-05-09) as a co-owned zone. Domain `mypaperclock.cc` purchased 2026-05-09; hosting arranged on Liquid Web; deploy is rsync-over-SSH from Alan's machine via `site/deploy.sh`, dry-run by default with `--apply` to push, no credentials in the script. Built and committed but **never deployed**: `site/build/index.html` (v0 homepage, six of eight sections written), `site/build/charter/index.html` (placeholder with three rendering options, currently a GitHub link), `site/build/assets/styles.css` (tokens extracted from `preview.html` — paper `#f0e0c8`, brass-gold `#c9a96e`, brass `#b89e5b`, silver `#c8cdd0`), `site/strategy/README.md` (voice guide, audience definition, sitemap), `site/INFRASTRUCTURE.md`. `site/live-sync/` is empty and undocumented.
+
+**Open questions at freeze.**
+
+- Personal-arc length and whether a hero image exists.
+- Live counters on the homepage — read from `work/state.json` at build time, or at runtime?
+- How `/charter` renders.
+- A server-hardening pass (SSH key auth, disabling root password login, certbot, ufw, fail2ban) was flagged as required before any public launch. Not done.
+- A possible amendment moving viewer hosting from GitHub Pages to `mypaperclock.cc/viewer/` was reserved as "potential A3" in the launch session — the A3 slot was subsequently used for the `alan-work/` retirement, so this one is **unnumbered and still open**.
+
+**Recent log.**
+
+- 2026-08-22: track created during the freeze reconciliation. It should have existed since 2026-05-09 — the launch session's own open question #8 asked for it and nobody added it, so the site work ran for a day and a half with no representation on the live surface at all.
+- 2026-05-09 (21:09): track launched. Charter A2 signed; strategy doc, deploy script, v0 homepage and charter page all authored. See `sessions/2026-05-09-2109_cowork_site-track-launch.md`.
 
 ---
 
@@ -254,7 +286,9 @@ closed_reason: Superseded by claude-work/. The operations-layer goal — give th
 
 ---
 
-*Last updated: 2026-05-10 — PR A (bench-cluster-foundation) shipped 2026-05-10 (00:30); parser-marks-lookup shipped 2026-05-10 (08:20). Both need merge + post-merge cleanup. Connection-graph now at 30 valid authored edges; 093b→093a resolves. Manual visual check on PR A still needed (real browser). Preview.html PR C (cluster mode) at root as draft — unblocked on Code side but needs 068 fold fix + 065/066/067/068 pose sidecars before the verification checklist is runnable. LAYER-CONVENTIONS.md 066-cluster exemplar table has doc drift (match types stale after marks-lookup). See `sessions/2026-05-10-0820_code_parser-marks-lookup.md` and `sessions/2026-05-10-0335_code_preview-html-bench-cluster-foundation.md`.*
+*Last updated: 2026-08-22 (freeze reconciliation) — every track re-checked against the git log and the working tree. Corrections applied: the preview.html track's next-action was a day and six merged PRs behind; its "what's shipped" list omitted seven ships; 066's sidecar was reported missing when it existed; 068's fold bug was reported as blocking when QUEUE.md recorded it fixed in the same commit; DECISIONS #4 was described as deferred in two places when it closed on 2026-05-07; graph counts were stated as 24/24 when the file carries 51 declared and 30 resolving; a `site` track was missing entirely and has been added. One claim in QUEUE.md was found to be wrong on the merits rather than merely stale — see the pivot-cluster note there. Nothing maintains this file after this date.*
+
+*Earlier 2026-05-10 [superseded by the line above] — PR A (bench-cluster-foundation) shipped 2026-05-10 (00:30); parser-marks-lookup shipped 2026-05-10 (08:20). Both need merge + post-merge cleanup. Connection-graph now at 30 valid authored edges; 093b→093a resolves. Manual visual check on PR A still needed (real browser). Preview.html PR C (cluster mode) at root as draft — unblocked on Code side but needs 068 fold fix + 065/066/067/068 pose sidecars before the verification checklist is runnable. LAYER-CONVENTIONS.md 066-cluster exemplar table has doc drift (match types stale after marks-lookup). See `sessions/2026-05-10-0820_code_parser-marks-lookup.md` and `sessions/2026-05-10-0335_code_preview-html-bench-cluster-foundation.md`.*
 
 *Earlier 2026-05-09 (late night) — 069 sidecar captured (first in repo); R key dual-listener bug fixed in `preview.html`; 068 two-component fold graph authoring issue identified. Anchor cluster pose capture continues next session: 068 fold fix first, then 067/066/065/068 sidecars, then PR C. See `sessions/2026-05-09-2230_cowork_bench-pose-capture-069.md`.*
 

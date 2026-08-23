@@ -1,0 +1,43 @@
+# Added 2026-08-22 at the handoff pivot.
+#
+# Before this file existed, a Windows checkout reported all 213 tracked text
+# files as modified — a ~53,000-line phantom diff that was purely CRLF vs LF.
+# `git diff --ignore-all-space` came back empty. Pinning LF in both the index
+# and the working tree makes the two benches agree.
+#
+# If you ever see that phantom diff again: it is line endings, not content.
+# `git reset --hard` is safe.
+
+* text=auto eol=lf
+
+# Explicit text types (belt and braces)
+*.md      text eol=lf
+*.txt     text eol=lf
+*.py      text eol=lf
+*.js      text eol=lf
+*.ts      text eol=lf
+*.html    text eol=lf
+*.css     text eol=lf
+*.json    text eol=lf
+*.yaml    text eol=lf
+*.yml     text eol=lf
+*.csv     text eol=lf
+*.svg     text eol=lf
+*.sh      text eol=lf
+Makefile  text eol=lf
+
+# Binary — never touch these
+*.af      binary
+*.afdesign binary
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.gif     binary
+*.pdf     binary
+*.zip     binary
+*.rtf     binary
+*.ico     binary
+*.woff    binary
+*.woff2   binary
+*.ttf     binary
+*.otf     binary
